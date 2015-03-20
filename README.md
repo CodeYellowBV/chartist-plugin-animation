@@ -2,33 +2,24 @@
 
 Implements some default animations for [Chartist](https://github.com/gionkunz/chartist-js) charts.
 
-## Install
+Currently has animations for:
 
-Install with npm. Then add this to your require.js config file:
-
-```js
-'shim': {
-    'chartist-plugin-animation': {
-        'deps': ['chartist', 'jquery']
-    }
-}
-```
+- Linechart
+- Barchart
 
 ## Usage
 
 In an example chart:
 
 ```js
-ChartistAnimation = require('chartist-plugin-animation');
-
 new Chartist.Bar('.ct-chart', data, {
         stackBars: true,
-    },
-    plugins: [
-        new ChartistAnimation({
-            duration: 2000
-        })
-    ]
+        plugins: [
+            Chartist.plugins.animation({
+                duration: 2000
+            })
+        ]
+    }
 });
 ```
 
