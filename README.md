@@ -7,6 +7,8 @@ Currently has animations for:
 - Linechart
 - Barchart
 
+Animation of piecharts is possible after [#204](https://github.com/gionkunz/chartist-js/pull/204) on Chartist is merged.
+
 ## Usage
 
 In an example chart:
