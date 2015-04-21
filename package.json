@@ -1,10 +1,11 @@
 {
     "name": "chartist-plugin-animation",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "author": "Kees Kluskens <kees@codeyellow.nl>",
     "description": "Shows some default animations for Chartist.js.",
     "repository": {
         "type": "git",
         "url": "https://github.com/CodeYellowBV/chartist-plugin-animation"
-    }
+    },
+    "main": "chartist-plugin-animation.js"
 }
