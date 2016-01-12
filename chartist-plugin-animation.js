@@ -10,65 +10,61 @@
         // like Node.
         module.exports = factory(require('chartist'), require('jquery'));
     } else {
-        root['Chartist.plugins.animation'] = factory(root.chartist, root.jquery);
+        root['Chartist.plugins.animation'] = factory(root.Chartist, root.jQuery);
     }
-}(this, function () {
+}(this, function (Chartist, $) {
 
     /**
      * This Chartist plugin provides some default animations.
      *
      */
-    (function (Chartist, $) {
-        'use strict';
+    'use strict';
 
-        var defaultOptions = {
-            duration: 1000 // Duration of animation in milliseconds.
-        };
+    var defaultOptions = {
+        duration: 1000 // Duration of animation in milliseconds.
+    };
 
-        Chartist.plugins = Chartist.plugins || {};
+    Chartist.plugins = Chartist.plugins || {};
 
-        Chartist.plugins.animation = function (options) {
+    Chartist.plugins.animation = function (options) {
 
-            options = Chartist.extend({}, defaultOptions, options);
+        options = Chartist.extend({}, defaultOptions, options);
 
-            return function animation(chart) {
+        return function animation(chart) {
 
-                chart.on('draw', function (data) {
-                    if (data.type === 'line' || data.type === 'area') {
-                        data.element.animate({
-                            d: {
-                                dur: options.duration,
-                                from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-                                to: data.path.clone().stringify(),
-                                easing: Chartist.Svg.Easing.easeOutQuint
-                            }
-                        });
-                    }
+            chart.on('draw', function (data) {
+                if (data.type === 'line' || data.type === 'area') {
+                    data.element.animate({
+                        d: {
+                            dur: options.duration,
+                            from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                            to: data.path.clone().stringify(),
+                            easing: Chartist.Svg.Easing.easeOutQuint
+                        }
+                    });
+                }
 
-                    if (data.type === 'bar') {
-                        data.element.animate({
-                            y2: {
-                                dur: options.duration,
-                                from: data.y1,
-                                to: data.y2,
-                                easing: Chartist.Svg.Easing.easeOutQuint
-                            },
-                            opacity: {
-                                dur: options.duration,
-                                from: 0,
-                                to: 1,
-                                easing: Chartist.Svg.Easing.easeOutQuint
-                            }
-                        });
-                    }
-                });
-
-            };
+                if (data.type === 'bar') {
+                    data.element.animate({
+                        y2: {
+                            dur: options.duration,
+                            from: data.y1,
+                            to: data.y2,
+                            easing: Chartist.Svg.Easing.easeOutQuint
+                        },
+                        opacity: {
+                            dur: options.duration,
+                            from: 0,
+                            to: 1,
+                            easing: Chartist.Svg.Easing.easeOutQuint
+                        }
+                    });
+                }
+            });
 
         };
 
-    }(Chartist, $));
-
+    };
     return Chartist.plugins.animation;
 
 }));
